@@ -2,6 +2,19 @@
     "name": "thelia/installer",
     "type": "composer-plugin",
     "license": "LGPL V3",
+    "description": "custom installer for Thelia.",
+    "keywords" : [
+        "Thelia",
+        "Thelia-module",
+        "Thelia-template"
+    ],
+    "authors": [
+        {
+            "name": "Manuel Raynaud",
+            "email": "raynaud.manu@gmail.com",
+            "homepage": "https://github.com/lunika"
+        }
+    ],
     "autoload": {
         "psr-0": {"Thelia\\Composer": "src/"}
     },
