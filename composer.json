@@ -1,0 +1,17 @@
+{
+    "name": "thelia/installer",
+    "type": "composer-plugin",
+    "license": "LGPL V3",
+    "autoload": {
+        "psr-0": {"Thelia\\Composer": "src/"}
+    },
+    "extra": {
+        "class": "Thelia\\Composer\\InstallerPlugin"
+    },
+    "require": {
+        "composer-plugin-api": "1.0.0"
+    },
+    "require-dev": {
+        "composer/composer": "1.0.*@dev"
+    }
+}
