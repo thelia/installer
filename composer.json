@@ -6,7 +6,7 @@
         "psr-0": {"Thelia\\Composer": "src/"}
     },
     "extra": {
-        "class": "Thelia\\Composer\\InstallerPlugin"
+        "class": "Thelia\\Composer\\TheliaInstallerPlugin"
     },
     "require": {
         "composer-plugin-api": "1.0.0"
