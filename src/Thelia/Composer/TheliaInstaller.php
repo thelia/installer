@@ -15,7 +15,6 @@ namespace Thelia\Composer;
 use Composer\Installer\LibraryInstaller;
 use Composer\Package\PackageInterface;
 
-
 /**
  * Class TheliaInstaller
  * @package Thelia\Composer
@@ -24,27 +23,35 @@ use Composer\Package\PackageInterface;
 class TheliaInstaller extends LibraryInstaller
 {
     protected $locations = [
-        'module' => 'local/modules/{$name}/',
-        'frontoffice-template' => 'templates/frontOffice/{$name}/',
-        'backoffice-template' => 'templates/backOffice/{$name}/',
-        'email-template' => 'templates/email/{$name}/',
+        'thelia-module' => 'local/modules/',
+        'thelia-frontoffice-template' => 'templates/frontOffice/',
+        'thelia-backoffice-template' => 'templates/backOffice/',
+        'thelia-email-template' => 'templates/email/',
     ];
 
-    protected $supportedType = [
-        'thelia-module',
-        'thelia-frontoffice-template',
-        'thelia-backoffice-template',
-        'thelia-email-template'
-    ];
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getPackageBasePath(PackageInterface $package)
+    public function getInstallPath(PackageInterface $package)
     {
+        $type = $package->getType();
+        if (!isset($this->locations[$package->getType()])) {
+            throw new \InvalidArgumentException(sprintf('package type "%s" is not supported', $type));
+        }
 
-        return $this->locations[$package->getType()] . $package->getPrettyName();
+        $base = $this->locations[$type];
 
+        $prettyName = $package->getPrettyName();
+        if (strpos($prettyName, '/') !== false) {
+            list($vendor, $name) = explode('/', $prettyName);
+        } else {
+            $vendor = '';
+            $name = $prettyName;
+        }
+
+        $extra = $package->getExtra();
+        if (!empty($extra['installer-name'])) {
+            $name = $extra['installer-name'];
+        }
+
+        return $base . $name;
     }
 
     /**
@@ -52,6 +59,6 @@ class TheliaInstaller extends LibraryInstaller
      */
     public function supports($packageType)
     {
-        return in_array($packageType, $this->supportedType);
+        return array_key_exists($packageType, $this->locations);
     }
-} 
+}

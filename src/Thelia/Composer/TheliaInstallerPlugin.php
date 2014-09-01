@@ -12,7 +12,6 @@
 
 namespace Thelia\Composer;
 
-
 use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
@@ -28,4 +27,4 @@ class TheliaInstallerPlugin implements PluginInterface
         $installer = new TheliaInstaller($io, $composer);
         $composer->getInstallationManager()->addInstaller($installer);
     }
-} 
+}
