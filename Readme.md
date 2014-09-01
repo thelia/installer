@@ -1,4 +1,4 @@
-# Customer installer for [Composer](http://getcomposer.org)
+# Custom installer for [Composer](http://getcomposer.org)
 
 This installer allows you to install module and templates using composer. We created special ```type``` for Thelia
 
