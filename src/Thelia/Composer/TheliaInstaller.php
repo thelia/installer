@@ -28,6 +28,7 @@ class TheliaInstaller extends LibraryInstaller
         'thelia-backoffice-template' => 'templates/backOffice/',
         'thelia-email-template' => 'templates/email/',
         'thelia-pdf-template' => 'templates/pdf/',
+        'thelia-local' => 'local/',
     ];
 
     public function getInstallPath(PackageInterface $package)
