@@ -1,7 +1,7 @@
 {
     "name": "thelia/installer",
     "type": "composer-plugin",
-    "license": "LGPL V3",
+    "license": "LGPL-3.0-or-later",
     "description": "custom installer for Thelia.",
     "keywords" : [
         "Thelia",
